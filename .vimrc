@@ -1,6 +1,8 @@
 " don't bother with vi compatibility
 set nocompatible
 
+set timeoutlen=1000 ttimeoutlen=0
+
 " enable syntax highlighting
 syntax enable
 
@@ -58,14 +60,22 @@ endif
 
 " keyboard shortcuts
 let mapleader = "\<Space>"
-map <Leader>yy orequire 'pry'; binding.pry<esc>:w<cr>
+map <Leader>tt i[ACLPROD-129]
+map <Leader>pp obinding.remote_pry<esc>:w<cr>
+map <Leader>yy obinding.pry<esc>:w<cr>
 map <Leader>so osave_and_open_page<esc>:w<cr>
 " Use leader-i to properly indent lines depending on filetype
 map <Leader>i mzgg=G`z<cr>
+map <C-i> :NERDTreeToggle<CR>
+map <Leader>p :r !pbpaste<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>q :wq<CR>
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+inoremap jf <esc>
+inoremap fj <esc>
 noremap <leader>l :Align
 nnoremap <leader>a :Ag<space>
 nnoremap <leader>b :CtrlPBuffer<CR>
@@ -76,10 +86,13 @@ nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 map <silent> <leader>t :TestNearest<CR>
-map <silent> <leader>f :TestFile<CR>
+" map <silent> <leader>f :TestFile<CR>
 map <silent> <leader>T :TestSuite<CR>
 map <silent> <leader>r :TestLast<CR>
 map <silent> <leader>v :TestVisit<CR>
+autocmd FileType ruby map <buffer> <leader>l :call vagrant_rspec#Rspecline()<cr>
+autocmd FileType ruby map <buffer> <leader>f :call vagrant_rspec#Rspecfile()<cr>
+autocmd FileType ruby map <buffer> <leader>r :call vagrant_rspec#Rspecall()<cr>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -168,6 +181,15 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save
+
+"" CtrlP
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
 
 " Airline Config
 let g:airline_theme='solarized'
