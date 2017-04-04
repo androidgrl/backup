@@ -22,6 +22,7 @@ call vundle#end()
 " ensure ftdetect et al work by including this after the Vundle stuff
 filetype plugin indent on
 
+set hidden
 set autoindent
 set autoread                                                 " reload files when changed on disk, i.e. via `git checkout`
 set backspace=2                                              " Fix broken backspace in some setups
@@ -60,7 +61,7 @@ endif
 
 " keyboard shortcuts
 let mapleader = "\<Space>"
-map <Leader>tt i[ACLPROD-129]
+map <Leader>tt i[ACL-10335]
 map <Leader>pp obinding.remote_pry<esc>:w<cr>
 map <Leader>yy obinding.pry<esc>:w<cr>
 map <Leader>so osave_and_open_page<esc>:w<cr>
@@ -85,14 +86,11 @@ nnoremap <leader>] :TagbarToggle<CR>
 nnoremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>g :GitGutterToggle<CR>
 noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-map <silent> <leader>t :TestNearest<CR>
-" map <silent> <leader>f :TestFile<CR>
-map <silent> <leader>T :TestSuite<CR>
-map <silent> <leader>r :TestLast<CR>
-map <silent> <leader>v :TestVisit<CR>
-autocmd FileType ruby map <buffer> <leader>l :call vagrant_rspec#Rspecline()<cr>
-autocmd FileType ruby map <buffer> <leader>f :call vagrant_rspec#Rspecfile()<cr>
-autocmd FileType ruby map <buffer> <leader>r :call vagrant_rspec#Rspecall()<cr>
+nmap <silent> <leader>n :TestNearest<CR>
+nmap <silent> <leader>r :TestFile<CR>
+nmap <silent> <leader>s :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>v :TestVisit<CR>
 
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
@@ -190,6 +188,29 @@ if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+
+"neocomplete settings
+let g:neocomplete#enable_at_startup = 1
+set wildmode=list:longest
+set wildignore=*.o,*.obj,*~
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=node_modules/**
+set wildignore+=tmp/**
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+"Ultisnips settings
+let g:UltiSnipsExpandTrigger="<TAB>"
+let g:UltiSnipsListSnippets="<c-TAB>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " Airline Config
 let g:airline_theme='solarized'

@@ -8,23 +8,43 @@ export NVM_DIR=~/.nvm
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+#if there's a directory /bin then add
+test -d ~/bin && PATH="~/bin:$PATH"
+
 # support for postgres
-export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+#export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PGHOST=localhost
 
 # prompt
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
+export PATH
 export -f parse_git_branch
 export CLICOLOR=1
 export PS1="\[\033[36m\][\w]\[\033[33m\]\$(parse_git_branch)\[\033[00m\] \n\$\[\033[00m\] "
 
-#branches
-alias acl="git checkout aclprod-259/jamie"
 #directories
+alias hab="cd ~/practice/habitat_humanity"
+alias brain="cd ~/practice/braintree"
+alias adam="cd ~/practice/adam"
+alias lab="cd ~/gitlab-development-kit"
+alias idea="cd ~/practice/turing/projects/idea_box_2"
+alias han="cd ~/practice/handshake"
+alias sel="cd ~/practice/turing/integration-testing/selenium-workshop"
+alias set="cd ~/practice/setup"
+alias din="cd ~/practice/turing/projects/dinner_dash"
+alias alg="cd ~/practice/algorithms"
+alias bel="cd ~/practice/crud/belibery"
+alias jam="cd ~/practice/turing/crud/jams"
+alias exr="cd ~/exercism/ruby"
+alias fix="cd ~/practice/stitch-fix-rails-project-2.1.3"
+alias blog="cd ~/practice/blog"
+alias vag="cd ~/projects/acl-web-vagrant"
 alias prac="cd ~/practice/"
 alias vswp="cd /var/tmp"
+alias events='cd ~/projects/acl-web-vagrant/acl-ui-events'
 alias web="cd ~/projects/acl-web"
 alias api="cd ~/projects/acl-api"
 alias in="cd ~/projects/insights"
