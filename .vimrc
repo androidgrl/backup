@@ -12,9 +12,12 @@ call vundle#end()
 
 " color scheme
 syntax enable
+syntax on
 colorscheme solarized
 
 " settings
+set nocompatible
+set hidden
 set smartindent
 set autoindent
 set mouse=a
@@ -26,19 +29,23 @@ set list
 set ruler
 set ignorecase
 set smartcase
+set tabstop=4
 set softtabstop=2
+set shiftwidth=2
+set expandtab
 set mouse=a
 if exists('$TMUX')  " Support resizing in tmux
   set ttymouse=xterm2
 endif
 filetype indent on
+filetype plugin on
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 
 " keybindings
 let mapleader = "\<Space>"
 inoremap jf <esc>
 inoremap fj <esc>
-map <Leader>tt i[ACLPROD-10349]
+map <Leader>tt i[ACLPROD-1905]
 map <Leader>yy obinding.pry<esc>:w<cr>
 map <Leader>i mzgg=G`z<cr>
 map <C-i> :NERDTreeToggle<CR>
