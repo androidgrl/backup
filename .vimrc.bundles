@@ -16,9 +16,13 @@ Plugin 'tpope/vim-endwise'
 Plugin 'Raimondi/delimitMate'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-commentary'
+Plugin 'jelera/vim-javascript-syntax'
 
 "Git
 Plugin 'tpope/vim-fugitive'
 
 "UI
 Plugin 'altercation/vim-colors-solarized'
+
+"Notes
+Plugin 'vimwiki/vimwiki'
