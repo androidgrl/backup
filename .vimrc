@@ -1,4 +1,3 @@
-
 " configure Vundle
 filetype on " without this vim emits a zero exit status, later, because of :ft off
 filetype off
@@ -24,7 +23,6 @@ set autoindent
 set mouse=a
 set number                " set line numbers
 set relativenumber            " set relative line numbers
-set clipboard=unnamed 			" yank and paste with the system clipboard
 set listchars=tab:▸\ ,trail:▫
 set list
 set ruler
@@ -73,24 +71,12 @@ function! <SID>StripTrailingWhitespaces()
     let _s=@/
     let l = line(".")
     let c = col(".")
-<<<<<<< HEAD
     "associate the .es6 file extension with JavaScript
     autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-=======
-
-    "associate the .es6 file extension with JavaScript
-    autocmd BufRead,BufNewFile *.es6 setfiletype javascript
-
->>>>>>> 0fb851624970c1805dad20c740cb07c72632b1cd
     " Do the business:
     %s/\s\+$//e
     " Clean up: restore previous search history, and cursor position
     let @/=_s
     call cursor(l, c)
 endfunction
-<<<<<<< HEAD
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save"
-=======
-
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces() " strip trailing whitespace on save
->>>>>>> 0fb851624970c1805dad20c740cb07c72632b1cd
