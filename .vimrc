@@ -33,6 +33,7 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab
 set mouse=a
+set history=100
 filetype indent on
 filetype plugin on
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
