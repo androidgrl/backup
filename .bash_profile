@@ -27,6 +27,9 @@ alias rbp="source ~/.bash_profile"
 alias blog='cd ~/turing/androidgrl.github.io'
 alias exr='cd ~/exercism/ruby'
 alias alg='cd ~/practice/algorithms'
+alias prac='cd ~/practice'
+alias jam='cd ~/practice/my-jams'
+alias vrn='cd ~/practice/vrn'
 #git
 alias pull='git pull origin master'
 alias gcb='git checkout -b'

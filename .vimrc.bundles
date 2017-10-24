@@ -10,6 +10,9 @@ Plugin 'skalnik/vim-vroom'
 
 "RoR
 Plugin 'tpope/vim-rails'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
 
 "Formatting
 Plugin 'tpope/vim-surround'
