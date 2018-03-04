@@ -30,6 +30,7 @@ alias alg='cd ~/practice/algorithms'
 alias prac='cd ~/practice'
 alias jam='cd ~/practice/my-jams'
 alias vrn='cd ~/practice/vrn'
+alias mt='cd ~/mentor'
 #git
 alias pull='git pull origin master'
 alias gcb='git checkout -b'

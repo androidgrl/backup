@@ -34,9 +34,11 @@ set shiftwidth=2
 set expandtab
 set mouse=a
 set history=100
+set foldenable
 filetype indent on
 filetype plugin on
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 " keybindings
 let mapleader = "\<Space>"
